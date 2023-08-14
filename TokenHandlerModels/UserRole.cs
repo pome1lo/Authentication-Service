@@ -1,4 +1,4 @@
-﻿namespace JWTAuthenticationManager.Models
+﻿namespace JWTAuthenticationManager
 {
     public class UserRole
     {

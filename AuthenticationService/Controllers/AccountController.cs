@@ -20,13 +20,20 @@ namespace AuthenticationService.Controllers
         [AllowAnonymous]
         public ActionResult<AuthenticationResponse?> Authenticate([FromBody] AuthenticationRequest request)
         {
+            // verification via the account service
+            var user = new UserAccount();
+            ////
+
+            var authenticationResponse = _jwtTokenHandler.GenerateJwtToken(user);
+            if (authenticationResponse is null) return Unauthorized();
+            return authenticationResponse;
         }
 
-        [HttpPost]
-        [Route("Register")]
-        [AllowAnonymous]
-        public ActionResult<AuthenticationResponse?> Registration([FromBody] AuthenticationRequest request)
-        {
-        }
+        //[HttpPost]
+        //[Route("Register")]
+        //[AllowAnonymous]
+        //public ActionResult<AuthenticationResponse?> Registration([FromBody] AuthenticationRequest request)
+        //{
+        //}
     }
 }
