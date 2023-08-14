@@ -1,6 +1,6 @@
 ﻿namespace JWTAuthenticationManager.Models
 {
-    internal class UserAccount
+    public class UserAccount
     {
         public int Id { get; set; } = default;
         public string Name { get; set; } = string.Empty;

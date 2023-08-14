@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ocelot" Version="18.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\JWTAuthenticationManager\JWTAuthenticationManager.csproj" />
+    <ProjectReference Include="..\TokenHandlerModels\TokenHandlerModels.csproj" />
   </ItemGroup>
 
 </Project>

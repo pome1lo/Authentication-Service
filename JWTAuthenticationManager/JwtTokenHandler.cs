@@ -3,10 +3,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using TokenHandlerModels;
 
 namespace JWTAuthenticationManager
 {
-    internal class JwtTokenHandler
+    public class JwtTokenHandler
     {
         public const string JWT_SECURITY_KEY = "ksdjfosjf8sufjhsf8sd7fsdhfsdhiof";
         private const int JWT_TOKEN_VALIDITY_MINS = 20;

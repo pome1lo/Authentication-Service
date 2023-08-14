@@ -1,4 +1,4 @@
-﻿namespace JWTAuthenticationManager
+﻿namespace TokenHandlerModels
 {
     public class AuthenticationResponse
     {
