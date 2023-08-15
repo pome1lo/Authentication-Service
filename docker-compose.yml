@@ -1,0 +1,43 @@
+version: '3.4'
+
+networks:
+  backend:
+  frontend:
+
+services:
+
+  apigateway:
+    container_name: web-gateway-api
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+    - 5001:80 
+    networks:
+    - backend
+    - frontend
+
+  useraccountauthdb:
+    container_name: user-account-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment: 
+     - ACCEPT_EULA=Y
+     - SA_PASSWORD=password@12345
+    networks:
+     - backend
+    ports:
+     - 18001:1433
+
+  authenticationservice:
+    container_name: authnetication-service
+    image: ${DOCKER_REGISTRY-}authenticationservice
+    build:
+      context: .
+      dockerfile: AuthenticationService/Dockerfile
+    networks:
+    - backend
+    environment:
+    - DB_HOST=useraccountauthdb
+    - DB_NAME=user_accounts
+    - DB_SA_PASSWORD=password@12345
