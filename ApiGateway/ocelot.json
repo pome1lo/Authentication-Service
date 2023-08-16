@@ -1,4 +1,23 @@
 {
-  "Routes": [],
-  "GlobalConfiguration": {}
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/Account/{action}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authenticationservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/Account/{action}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:800",
+    "RateLimitOptions": {
+      "QuotaExceededMessage": "Request not allowed",
+      "HttpStatusCode": 909
+    }
+  }
 }

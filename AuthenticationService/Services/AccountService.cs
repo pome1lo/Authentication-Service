@@ -1,5 +1,7 @@
 ﻿using AuthenticationService.Database;
 using AuthenticationService.Database.Repository;
+using JWTAuthenticationManager;
+using TokenHandlerModels;
 
 namespace AuthenticationService.Services
 {
@@ -22,10 +24,28 @@ namespace AuthenticationService.Services
             }
         }
 
+        public UserAccount? GetUserAccountOrDefault(AuthenticationRequest request)
+        {
+            var user = Accounts.GetCollection().FirstOrDefault(x => x.Name == request.UserName);
+            
+            if (user is not null)
+            {
+                EncryptionService service = new(request.Password);
+
+                if (EncryptionService.Verify(service.Salt, user.Hash, request.Password))
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
+
         public void Save()
         {
             db.SaveChanges();
         }
+
+        #region Dispose 
 
         private bool disposed = false;
 
@@ -45,6 +65,8 @@ namespace AuthenticationService.Services
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
+        } 
+
+        #endregion
     }
 }

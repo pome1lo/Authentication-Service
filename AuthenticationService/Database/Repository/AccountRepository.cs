@@ -1,4 +1,5 @@
 ﻿using JWTAuthenticationManager;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuthenticationService.Database.Repository
 {
@@ -25,9 +26,9 @@ namespace AuthenticationService.Database.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<UserAccount> GetBookList()
+        public IEnumerable<UserAccount> GetCollection()
         {
-            throw new NotImplementedException();
+            return db.Users.Include(x => x.Role);
         }
 
         public void Save()

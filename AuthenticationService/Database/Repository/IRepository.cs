@@ -2,7 +2,7 @@
 {
     public interface IRepository<T> : IDisposable where T : class
     {
-        IEnumerable<T> GetBookList();
+        IEnumerable<T> GetCollection();
         T GetBook(int id);
         void Create(T item);
         void Update(T item);

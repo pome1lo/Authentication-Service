@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: ApiGateway/Dockerfile
     ports:
-    - 5001:80 
+    - 8001:80 
     networks:
     - backend
     - frontend
@@ -39,5 +39,5 @@ services:
     - backend
     environment:
     - DB_HOST=useraccountauthdb
-    - DB_NAME=user_accounts
+    - DB_NAME=USER_ACCOUNTS
     - DB_SA_PASSWORD=password@12345

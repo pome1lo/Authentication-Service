@@ -15,7 +15,7 @@ var conntectionString = $"Data Source={dbHost};Initial Catalog={dbName};User ID=
 builder.Services.AddDbContext<AccountDbContext>(opt => opt.UseSqlServer(conntectionString));
 
 builder.Services.AddSingleton<JwtTokenHandler>();
-builder.Services.AddSingleton<AccountService>();
+builder.Services.AddScoped<AccountService>();
 
 var app = builder.Build();
 

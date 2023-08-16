@@ -14,8 +14,14 @@ namespace JWTAuthenticationManager
         [Column("USER_ACCOUNT_EMAIL")]
         public string Name { get; set; } = string.Empty;
 
-        [Column("USER_ACCOUNT_PASSWORD")]
-        public string Password { get; set; } = string.Empty;
+        //[Column("USER_ACCOUNT_PASSWORD")]
+        //public string Password { get; set; } = string.Empty;
+
+        [Column("USER_ACCOUNT_SALT")]
+        public string Salt { get; set; } = string.Empty;
+
+        [Column("USER_ACCOUNT_HASH")]
+        public string Hash { get; set; } = string.Empty;
 
         [Column("USER_ROLE_ID")]
         public int RoleId { get; set; }

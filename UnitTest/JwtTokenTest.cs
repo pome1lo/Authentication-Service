@@ -11,7 +11,7 @@ namespace UnitTest
         {
             var handler = new JwtTokenHandler();
 
-            var user = new UserAccount() { Name = "test", Password = "12345", Role = new UserRole() { RoleName = "User"}, RoleId = 2};
+            var user = new UserAccount() { Name = "test", Salt = "1", Hash="1", Role = new UserRole() { RoleName = "User"}, RoleId = 2};
             var token = handler.GenerateJwtToken(user);
 
             var expected = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
